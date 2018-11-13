@@ -187,7 +187,8 @@ int main(void)
 
   // 持續追蹤最大的 file descriptor
     fdmax=listener;
-  
+
+  printf("server: waiting for connections...\n");
 
   // 主要迴圈
   for( ; ; ) {
@@ -223,14 +224,14 @@ int main(void)
               newfd);
           }
 
-        } 
-	else 
+        }
+	else
 	{
-          // 處理來自 client 的資料	 
+          // 處理來自 client 的資料
 	  handle_socket(i);
   	  close(i);
-	  FD_CLR(i,&master);	  
-	 
+	  FD_CLR(i,&master);
+
 
         } // END handle data from client
       } // END got new incoming connection
